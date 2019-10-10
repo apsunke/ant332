@@ -9,6 +9,10 @@ metadata:
 data:
   filebeat.yml: |-
     logging.level: debug
+    setup.kibana.host: "vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com:443"
+    setup.kibana.protocol: "https"
+    setup.kibana.path: /_plugin/kibana
+    setup.dashboards.enabled: true
     filebeat.inputs:
     - type: log
       symlinks: true
