@@ -29,6 +29,11 @@ data:
 
     output.elasticsearch:
       hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
+    
+    setup.kibana.host: "vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com:443"
+    setup.kibana.protocol: "https"
+    setup.kibana.path: /_plugin/kibana
+    setup.dashboards.enabled: true
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -116,7 +121,7 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: https://vpc-eks-es-workshop-demo-6-7-ie3yt2yrhq7vx5b6nkubn5un7q.us-west-2.es.amazonaws.com
+          value: https://vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com
         - name: ELASTICSEARCH_PORT
           value: "443"
         - name: ELASTICSEARCH_USERNAME
@@ -201,6 +206,10 @@ data:
 
     output.elasticsearch:
       hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
+    setup.kibana.host: "vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com:443"
+    setup.kibana.protocol: "https"
+    setup.kibana.path: /_plugin/kibana
+    setup.dashboards.enabled: true
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -251,7 +260,7 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: https://vpc-eks-es-workshop-demo-6-7-ie3yt2yrhq7vx5b6nkubn5un7q.us-west-2.es.amazonaws.com
+          value: https://vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com
         - name: ELASTICSEARCH_PORT
           value: "443"
         - name: ELASTICSEARCH_USERNAME
