@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie10 lt-ie9 aws-lng-en_US" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" data-aws-assets="https://a0.awsstatic.com" data-js-version="1.0.263" data-css-version="1.0.250" >
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10 aws-lng-en_US" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" data-aws-assets="https://a0.awsstatic.com" data-js-version="1.0.263" data-css-version="1.0.250" ><![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js aws-lng-en_US" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" data-aws-assets="https://a0.awsstatic.com" data-js-version="1.0.263" data-css-version="1.0.250">
+ <!--<![endif]-->
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" />
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" />
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" />
+  <title>Amazon Elasticsearch Service Bootcamp</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aws.amazon.com/elasticsearch/" />
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/main/images/site/favicon.ico" />
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/main/images/site/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/main/images/site/touch-icon-iphone-114-precomposed.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/main/images/site/touch-icon-ipad-144-precomposed.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/main/images/site/touch-icon-iphone-114-precomposed.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/main/images/site/touch-icon-ipad-144-precomposed.png" />
+  <link rel="alternate" href="//aws.amazon.com/de/elasticsearch/" hreflang="de-de" />
+  <link rel="alternate" href="//aws.amazon.com/elasticsearch/" hreflang="en-us" />
+  <link rel="alternate" href="//aws.amazon.com/es/elasticsearch/" hreflang="es-es" />
+  <link rel="alternate" href="//aws.amazon.com/fr/elasticsearch/" hreflang="fr-fr" />
+  <link rel="alternate" href="//aws.amazon.com/it/elasticsearch/" hreflang="it-it" />
+  <link rel="alternate" href="//aws.amazon.com/jp/elasticsearch/" hreflang="ja-jp" />
+  <link rel="alternate" href="//aws.amazon.com/ko/elasticsearch/" hreflang="ko-kr" />
+  <link rel="alternate" href="//aws.amazon.com/pt/elasticsearch/" hreflang="pt-br" />
+  <link rel="alternate" href="//aws.amazon.com/ru/quicksight/" hreflang="ru-ru" />
+  <link rel="alternate" href="//aws.amazon.com/cn/elasticsearch/" hreflang="zh-cn" />
+  <link rel="alternate" href="//aws.amazon.com/tw/elasticsearch/" hreflang="zh-tw" />
+  <!--[if lte IE 9]>
+    <link rel="stylesheet" href="https://a0.awsstatic.com/main/css/1.0.250/fontawesome.css">
+    <link rel="stylesheet" href="https://a0.awsstatic.com/main/css/1.0.250/style-ie.css">
+    <link rel="stylesheet" href="https://a0.awsstatic.com/main/css/1.0.250/style-ie-2.css">
+  <![endif]-->
+  <!--[if (gt IE 9) | (!IE)]><!-->
+  <link rel="stylesheet" href="https://a0.awsstatic.com/main/css/1.0.250/style.css" />
+  <!--<![endif]-->
+  <script>
+    var AWS = {
+      PageSettings: {
+        supportedLanguages: ['en', 'es', 'de', 'fr', 'it', 'jp', 'ko', 'pt', 'ru', 'cn', 'tw'],
+        defaultLanguage: 'en',
+        logDataSet: 'LIVE:PROD',
+        logInstance: 'PUB'
+      }
+    };
+
+    var require = {
+      baseUrl: "https://a0.awsstatic.com/chrome/js/1.0.263/",
+      paths: {
+        "jquery": "jquery-amd"
+      },
+      deps: ["scripts"],
+      shim: {
+        "scripts": ["jquery"],
+        "forms": ["jquery"],
+        "pricing-table": ["jquery", "scripts"],
+        "plugins/bootstrap.button": ["jquery"],
+        "plugins/bootstrap.collapse": ["jquery"],
+        "plugins/bootstrap.dropdown": ["jquery"],
+        "plugins/bootstrap.popover": ["jquery"],
+        "plugins/bootstrap.tab": ["jquery"],
+        "plugins/bootstrap.tooltip": ["jquery"],
+        "plugins/free-tier": ["jquery", "scripts"],
+        "plugins/jquery.caroufredsel": ["jquery"],
+        "plugins/jquery.fancybox": ["jquery"],
+        "plugins/jwplayer.html5": ["jquery"],
+        "plugins/jwplayer": ["jquery"],
+        "plugins/pbSize": ["jquery"],
+        "plugins/pushstate": ["jquery", "scripts"],
+        "plugins/search-controller": ["jquery"],
+        "plugins/jquery.touchSwipe": ["jquery"]
+      },
+      waitSeconds: 15
+    };
+  </script>
+  <!--[if lt IE 9]>
+    <script src="https://a0.awsstatic.com/chrome/js/1.0.263/head.1.9.js"></script>
+  <![endif]-->
+  <!--[if (gte IE 9) | (!IE)]><!-->
+  <script src="https://a0.awsstatic.com/chrome/js/1.0.263/head.2.0.js"></script>
+  <!--<![endif]-->
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script>
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,holdJqueryReady: true,demandbase: true,pageLanguage: 'en'
+      };
+    </script>
+  <script src="https://a0.awsstatic.com/target/1.0.73/aws-target-mediator.js"></script>
+ </head>
+ <body class="homepage">
+  <header id="aws-page-header" class="aws" role="banner">
+   <div class="parsys content">
+    <div class="parbase nav-desktop section">
+     <div id="aws-nav" class="aws-nav" role="navigation">
+      <div class="aws-nav-header">
+       <div class="aws-nav-header-left">
+        <div class="aws-bg-logo aws-amazon_web_services_blocks-header-desktop-en">
+         <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a>
+        </div>
+        <div class="lb-mbox js-mbox" data-mbox="en_nav_h_ql">
+        </div>
+       <div class="aws-nav-popover-arrow"></div>
+       <div class="aws-nav-popover-arrow-inner"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div id="aws-page-content" class="page-content">
+   <main role="main">
+    <section>
+     <div class="parsys content">
+      <div class="row-builder section">
+       <div style="background-image: url('https://d1.awsstatic.com/Digital%20Marketing/House/Hero/background/background-hero/hero_background_green.37a4280c3b707b8286de38ef97df71ee8bf075bf.png'); background-color: #ffffff; padding-top: 40px; padding-bottom: 50px;" class="topLeft midPad ">
+        <div class="row wrapper">
+         <div class="twelve columns">
+          <div class="parsys col1">
+           <div class="aws-comp section">
+            <figure class="image-box offset-nopad ">
+             <div class="image parbase">
+              <img alt="AES" title="AWS re:Invent" src="https://search-sa-log-solutions.s3-us-east-2.amazonaws.com/logstash/html/loft.png" />
+             </div>
+            </figure>
+           </div>
+		   <div class="title-wrapper section">
+            <div class="row title offset-small dark-bg-copy">
+             <div class="twelve columns">
+              <h1 id="Amazon_Elasticsearch_Service" class="center title-xl"> <a name="Amazon_Elasticsearch_Service"> Use Amazon ES to visualize and monitor containerized applications</a> </h1>
+             </div>
+            </div>
+           </div>
+		   <div class="aws-comp section">
+            <figure class="image-box offset-medium ">
+             <div class="image parbase">
+              <img alt="AWS Cloud" title="Amazon Web Services" src="https://d1.awsstatic.com/Graphics/rule.8cdf84655eb8d92fc2f7d0eddba94f1e1bc2d650.png" />
+             </div>
+            </figure>
+           </div>
+           <div class="title-wrapper section">
+            <div class="row title offset-large dark-bg-copy">
+             <div class="twelve columns">
+              <h3 id="Fully_managed,_reliable,_and_scalable_Elasticsearch_service." class="center"> <a name="Fully_managed,_reliable,_and_scalable_Elasticsearch_service."> Monitor applications in EKS using Amazon ES along with Beats and Fluentd</a> </h3>
+             </div>
+            </div>
+           </div>
+           <div class="parbase section mbox">
+            <div class="lb-mbox js-mbox" data-mbox="en_horizontal_cta">
+             <div class="parsys mbox">
+              <div class="columnbuilder parbase section">
+               <div class="row column-builder offset-xlarge">
+                <div class="three columns">
+                 <div class="parsys col1">
+                 </div>
+                </div>
+                <div class="six columns">
+                 <div class="parsys col2">
+                  <div class="parbase aws-button section">
+                 <a href="" class="button column-builder btn-size-normal btn-block btn-gold offset-nopad" id="aws-element-button-57d397ee-505a-4305-91c8-e7cea44953c2">Lab Instructions - (lab)</a> 
+             	   <a href="https://search-sa-log-solutions.s3-us-east-2.amazonaws.com/logstash/docs/Kibana_Proxy_SSH_Tunneling_Windows.pdf" class="button column-builder btn-size-normal btn-block btn-gold offset-nopad" id="aws-element-button-57d397ee-505a-4305-91c8-e7cea44953c2"> Windows SSH / Tunnel for Kibana Instructions</a>
+             	   <a href="https://search-sa-log-solutions.s3-us-east-2.amazonaws.com/logstash/docs/Kibana_Proxy_SSH_Tunneling_Mac_Linux_Loft.pdf" class="button column-builder btn-size-normal btn-block btn-gold offset-nopad" id="aws-element-button-57d397ee-505a-4305-91c8-e7cea44953c2"> Mac / Linux - SSH / Tunnel for Kibana Instructions</a>
+                   <a href="https://aws.amazon.com/elasticsearch-service/" class="button column-builder btn-size-normal btn-block btn-gold offset-nopad" id="aws-element-button-57d397ee-505a-4305-91c8-e7cea44953c2">Amazon Elasticsearch Service Web Site</a>                   </div>
+                 </div>
+                </div>
+                <div class="four columns">
+                 <div class="parsys col3">
+                 </div>
+                </div>
+               </div>
+              </div>
+             </div>
+            </div>
+		   </div>
+		   <div class="blank1 section">
+		    <div class="row title offset-xlarge dark-bg-copy">
+		     <div class="twelve columns">
+		      <h1 id="blank1" class="center"> <a name="blank1"> </a> </h1>
+		     </div>
+		    </div>
+		   </div>
+  		   <div class="blank2 section">
+		    <div class="row title offset-xlarge dark-bg-copy">
+		     <div class="twelve columns">
+		      <h1 id="blank2" class="center"> <a name="blank2"> </a> </h1>
+		     </div>
+		    </div>
+     	   </div>
+ 		   <div class="blank3 section">
+		    <div class="row title offset-xlarge dark-bg-copy">
+		     <div class="twelve columns">
+		      <h1 id="blank3" class="center"> <a name="blank3"> </a> </h1>
+		     </div>
+		    </div>
+		   </div>
+     	   <div class="blank4 section">
+		    <div class="row title offset-xlarge dark-bg-copy">
+		     <div class="twelve columns">
+		      <h1 id="blank4" class="center"> <a name="blank4"> </a> </h1>
+		     </div>
+		    </div>
+		   </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+	</div>
+  <footer id="aws-page-footer" class="aws" role="banner">
+   <div class="parsys content">
+    <div class="parbase nav-desktop section">
+     <div id="aws-nav" class="aws-nav" role="navigation">
+      <div class="aws-nav-header">
+       <div class="aws-nav-header-left">
+        <div class="lb-mbox js-mbox" data-mbox="en_nav_h_ql">
+        </div>
+       <div class="aws-nav-popover-arrow"></div>
+       <div class="aws-nav-popover-arrow-inner"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <div id="aws-page-end"></div>
+  <script>require(['jquery', 'scripts']);</script>
+  <script src="https://a0.awsstatic.com/da/js/1.0.25/aws-da.js"></script>
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved -->
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+  <script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+  <noscript>
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" />
+  </noscript>
+  <!--/DO NOT REMOVE/-->
+  <!-- End SiteCatalyst code version: H.25.1. -->
+  <!-- updated_at: 2016-07-22T11:26:22.628-0700 -->
+ </body>
+</html>
