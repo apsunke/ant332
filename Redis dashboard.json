@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "a8906680-f5cc-11e9-838c-67ca11fcb84a",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Redis dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"panelIndex\":\"1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":13,\"h\":12,\"i\":\"1\"},\"embeddableConfig\":{},\"id\":\"7c7ef7a0-f5cc-11e9-8805-a3bfa931bb58\",\"type\":\"visualization\",\"version\":\"6.3.1\"},{\"panelIndex\":\"2\",\"gridData\":{\"x\":13,\"y\":0,\"w\":11,\"h\":12,\"i\":\"2\"},\"version\":\"6.3.1\",\"type\":\"visualization\",\"id\":\"97a87050-f5cd-11e9-8805-a3bfa931bb58\",\"embeddableConfig\":{}},{\"panelIndex\":\"3\",\"gridData\":{\"x\":0,\"y\":12,\"w\":47,\"h\":14,\"i\":\"3\"},\"version\":\"6.3.1\",\"type\":\"visualization\",\"id\":\"5ba02200-f5ce-11e9-8805-a3bfa931bb58\",\"embeddableConfig\":{}},{\"panelIndex\":\"4\",\"gridData\":{\"x\":24,\"y\":0,\"w\":23,\"h\":12,\"i\":\"4\"},\"version\":\"6.3.1\",\"type\":\"visualization\",\"id\":\"11732e20-f5ce-11e9-8805-a3bfa931bb58\",\"embeddableConfig\":{}}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-1h",
+      "refreshInterval": {
+        "display": "10 seconds",
+        "pause": false,
+        "section": 1,
+        "value": 10000
+      },
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[],\"highlightAll\":true,\"version\":true}"
+      }
+    }
+  }
+]
