@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "0c62a860-f6b0-11e9-838c-67ca11fcb84a",
+    "_type": "search",
+    "_source": {
+      "title": "Kubernetes events saved search",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "kubernetes.labels.app",
+        "metricset.name",
+        "kubernetes.deployment.name",
+        "event.module"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"metricbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"metricbeat-*\",\"type\":\"phrase\",\"key\":\"event.module\",\"value\":\"kubernetes\",\"params\":{\"query\":\"kubernetes\",\"type\":\"phrase\"},\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"event.module\":{\"query\":\"kubernetes\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  }
+]
