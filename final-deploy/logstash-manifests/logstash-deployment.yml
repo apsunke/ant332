@@ -1,0 +1,69 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: logstash-deployment
+  namespace: logstash
+  labels:
+    app: logstash-es
+spec:
+  replicas: 3
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: ""
+      labels:
+        app: logstash-es
+    spec:
+      tolerations:
+      - key: dedicated
+        value: "true"
+        effect: NoSchedule
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/instance-type
+                operator: In
+                values:
+                - m5.2xlarge # Replace with instance type you chose for worker nodes.
+      containers:
+      - name: logstash
+        image: docker.elastic.co/logstash/logstash:7.0.1
+        ports:
+        - containerPort: 5044
+          name: beats
+          protocol: TCP
+        env:
+        - name: ES_VERSION
+          value: 7.0.1
+        - name: LS_JAVA_OPTS
+          value: -Xmx2g -Xms2g
+        volumeMounts:
+          - name: config-volume
+            mountPath: /usr/share/logstash/config
+          - name: logstash-pipeline-volume
+            mountPath: /usr/share/logstash/pipeline
+        resources:
+          limits:
+            cpu:    2
+            memory: 4Gi
+          requests:
+            cpu:    2
+            memory: 4Gi
+      volumes:
+      - name: config-volume
+        configMap:
+          name: logging-configmap
+          items:
+            - key: logstash.yml
+              path: logstash.yml
+            - key: jvm.options
+              path: jvm.options
+      - name: logstash-pipeline-volume
+        configMap:
+          name: logging-configmap
+          items:
+            - key: logstash.conf
+              path: logstash.conf

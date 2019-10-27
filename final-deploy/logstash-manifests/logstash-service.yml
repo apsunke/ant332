@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    # Service external-dns has to be deployed for this A record to be created in AWS Route53
+    external-dns.alpha.kubernetes.io/hostname: sample.logstash.com
+
+    # Defined ELB backend protocol as HTTPS to allow connection to Elasticsearch API
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+
+    # Load Balancer type that will be launched in AWS, ELB or NLB.
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+
+    # ARN of ACM certificate registered to the deployed ELB for handling connections over TLS
+    # ACM certificate should be issued to the DNS hostname defined earlier (elk.sec.example.com)
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: ""
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+
+    # Annotation to create internal only ELB
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+  labels:
+    app: logstash-es
+  name: logstash
+  namespace: logstash
+spec:
+  ports:
+    - name: beats
+      port: 5044
+      protocol: TCP
+  selector:
+    app: logstash-es
+  type: LoadBalancer
