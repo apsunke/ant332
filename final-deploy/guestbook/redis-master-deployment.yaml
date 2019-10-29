@@ -1,0 +1,75 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+data:
+  fluentbit_entrypoint: |
+    # waiting for redis online
+    sleep 60
+    apt update && apt install -y python curl
+    curl https://bootstrap.pypa.io/get-pip.py | python - 
+    pip install redis
+    while true; do
+      python /bin/redis_stats.py |  /fluent-bit/bin/fluent-bit -i stdin -t redis -o forward://fluentd-forwarder.logging.svc:24224 -q
+      sleep 10
+    done
+  redis_stats: |
+    #!/usr/bin/python
+    import redis, json, os
+    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    data = r.info()
+    data["pod_name"] = os.getenv("HOSTNAME")
+    print(json.dumps(data))
+    
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: redis-master
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      role: master
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: k8s.gcr.io/redis:e2e  # or just image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 6379
+      - name: redis-statistic
+        image: fluent/fluent-bit:0.14.6
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          bash /bin/fluentbit_entrypoint.sh
+        volumeMounts:
+          - name: fluentd-config
+            mountPath: /bin/redis_stats.py
+            subPath: redis_stats
+          - name: fluentd-config
+            mountPath: /bin/fluentbit_entrypoint.sh
+            subPath: fluentbit_entrypoint
+      volumes:
+        - name: fluentd-config
+          configMap:
+            name: fluentd-config
