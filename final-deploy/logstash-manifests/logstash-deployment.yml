@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: logstash-deployment
@@ -7,21 +7,24 @@ metadata:
   labels:
     app: logstash-es
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
         app: logstash-es
+    spec:
       containers:
       - name: logstash
-        image: docker.elastic.co/logstash/logstash:7.0.1
+        image: docker.elastic.co/logstash/logstash:6.8.4
         ports:
         - containerPort: 5044
           name: beats
           protocol: TCP
         env:
         - name: ES_VERSION
-          value: 7.0.1
+          value: 7.1.1
+        - name: ES_DOMAIN
+          value: ""
         - name: LS_JAVA_OPTS
           value: -Xmx2g -Xms2g
         volumeMounts:
@@ -31,11 +34,11 @@ spec:
             mountPath: /usr/share/logstash/pipeline
         resources:
           limits:
-            cpu:    2
-            memory: 4Gi
+            cpu:    1
+            memory: 2Gi
           requests:
-            cpu:    2
-            memory: 4Gi
+            cpu:    0.5
+            memory: 2Gi
       volumes:
       - name: config-volume
         configMap:

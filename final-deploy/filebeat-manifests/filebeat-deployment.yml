@@ -11,7 +11,8 @@ data:
     filebeat.inputs:
     - type: log
       paths:
-        - /var/log/kubelet.log
+        - /var/log/messages
+      tags: ["filebeat"]
       processors:
         - add_kubernetes_metadata:
             in_cluster: true
@@ -19,6 +20,7 @@ data:
             matchers:
             - logs_path:
                 logs_path: "/var/log/containers/"
+    logging.level: debug
 
     # To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
     #filebeat.autodiscover:
@@ -36,7 +38,7 @@ data:
       - add_host_metadata:
 
     output.logstash:
-      hosts: [""]
+      hosts: ["${LS_HOST}"]
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
@@ -57,20 +59,18 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: filebeat
-        image: docker.elastic.co/beats/filebeat-oss:7.0.1
+        image: docker.elastic.co/beats/filebeat-oss:6.8.4
         args: [
           "-c", "/etc/filebeat.yml",
           "-e",
         ]
         env:
-        - name: ELASTICSEARCH_HOST
-          value: https://vpc-aes-lab-domain-z4rpgpj6to2uzlsc3thgvoqtuq.eu-west-1.es.amazonaws.com
-        - name: ELASTICSEARCH_PORT
-          value: "443"
         - name: NODE_NAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        - name: LS_HOST
+          value: ""
         securityContext:
           runAsUser: 0
           # If using Red Hat OpenShift uncomment this:
