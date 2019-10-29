@@ -17,28 +17,28 @@ data:
     }
 
     filter {
-      if [path] =~ "access" {
-        mutate { replace => { "type" => "apache_access" } }
+      if "filebeat" in [tags] {
         grok {
-          match => { "message" => "%{COMBINEDAPACHELOG}" }
+            match => {
+                "message" => '(?<timestamp>\S+\s\d+\s\S+)\s(?<hostname>\S+)\s(?<log_message>.*)'
+            }
+            add_tag => [ "parsed_msg" ]
         }
-      }
-      date {
-        match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+        date {
+          match => ["timestamp", "MMM dd HH:mm:ss"]
+          target => "@timestamp"
+          add_tag => [ "parsed_time" ]
+        }
       }
     }
 
+
     output {
-      elasticsearch {
-        hosts => ["REPLACE_WITH_ES_API_HOST"]
-        index => "sample.%{+yyyy.MM.dd.HH}"
-        http_compression => true
-      }
-      s3 {
-        region => "us-east-1"
-        bucket => "REPLACE_WITH_BUCKET_NAME"
-        codec => "json"
-        prefix => "sample-%{+yyyy.MM.dd.HH}"
+      if "filebeat" in [tags] {
+        elasticsearch {
+          hosts => ["${ES_DOMAIN}"]
+          index => "filebeat.%{+yyyy.MM.dd.HH}"
+        }
       }
     }
 
