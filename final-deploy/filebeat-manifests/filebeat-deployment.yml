@@ -35,8 +35,8 @@ data:
       - add_cloud_metadata:
       - add_host_metadata:
 
-    output.elasticsearch:
-      hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
+    output.logstash:
+      hosts: [""]
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
