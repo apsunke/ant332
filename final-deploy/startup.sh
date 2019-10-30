@@ -11,4 +11,7 @@ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14
 chmod +x ./aws-iam-authenticator
 sudo mv aws-iam-authenticator /usr/local/bin
 aws eks --region eu-west-1 update-kubeconfig --name observability-workshop
+wget https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64
+mv yq_linux_amd64 yq
+sudo mv yq /usr/local/bin
 export KUBECONFIG=~/.kube/config
