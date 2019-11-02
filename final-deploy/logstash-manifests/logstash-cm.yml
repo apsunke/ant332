@@ -30,14 +30,26 @@ data:
           add_tag => [ "parsed_time" ]
         }
       }
+      else if "metricbeat" in [tags] {
+        date {
+          match => ["timestamp", "MMM dd HH:mm:ss"]
+          target => "@timestamp"
+          add_tag => [ "parsed_time" ]
+        }
+      }
     }
-
 
     output {
       if "filebeat" in [tags] {
         elasticsearch {
           hosts => ["${ES_DOMAIN}"]
           index => "filebeat.%{+yyyy.MM.dd.HH}"
+        }
+      }
+      else if "metricbeat" in [tags] {
+        elasticsearch {
+          hosts => ["${ES_DOMAIN}"]
+          index => "metricbeat.%{+yyyy.MM.dd.HH}"
         }
       }
     }
