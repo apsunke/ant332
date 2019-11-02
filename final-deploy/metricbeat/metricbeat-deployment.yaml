@@ -189,7 +189,8 @@ data:
       reload.enabled: false
 
     processors:
-      - add_cloud_metadata:
+    - add_tags:
+        tags: [metricbeat]
 
     output.logstash:
       hosts: ["${LS_HOST}"]
