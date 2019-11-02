@@ -22,15 +22,13 @@ data:
     #      hints.enabled: true
 
     processors:
-      - add_cloud_metadata:
+    - add_tags:
+        tags: [metricbeat]
 
-    cloud.id: ${ELASTIC_CLOUD_ID}
-    cloud.auth: ${ELASTIC_CLOUD_AUTH}
+    output.logstash:
+      hosts: ["${LS_HOST}"]
 
-    output.elasticsearch:
-      hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
-    
-    setup.kibana.host: "vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com:443"
+    setup.kibana.host: "${KIBANA_HOST}"
     setup.kibana.protocol: "https"
     setup.kibana.path: /_plugin/kibana
     setup.dashboards.enabled: true
@@ -80,7 +78,7 @@ data:
       period: 10s
       host: ${NODE_NAME}
       hosts: ["localhost:10255"]
-      # If using Red Hat OpenShift remove the previous hosts entry and 
+      # If using Red Hat OpenShift remove the previous hosts entry and
       # uncomment these settings:
       #hosts: ["https://${HOSTNAME}:10250"]
       #bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -120,18 +118,10 @@ spec:
           "-system.hostfs=/hostfs",
         ]
         env:
-        - name: ELASTICSEARCH_HOST
-          value: https://vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com
-        - name: ELASTICSEARCH_PORT
-          value: "443"
-        - name: ELASTICSEARCH_USERNAME
-          value: 
-        - name: ELASTICSEARCH_PASSWORD
-          value: 
-        - name: ELASTIC_CLOUD_ID
-          value:
-        - name: ELASTIC_CLOUD_AUTH
-          value:
+        - name: LS_HOST
+          value: ""
+        - name: KIBANA_HOST
+          value: ""
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -201,12 +191,10 @@ data:
     processors:
       - add_cloud_metadata:
 
-    cloud.id: ${ELASTIC_CLOUD_ID}
-    cloud.auth: ${ELASTIC_CLOUD_AUTH}
+    output.logstash:
+      hosts: ["${LS_HOST}"]
 
-    output.elasticsearch:
-      hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
-    setup.kibana.host: "vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com:443"
+    setup.kibana.host: "${KIBANA_HOST}"
     setup.kibana.protocol: "https"
     setup.kibana.path: /_plugin/kibana
     setup.dashboards.enabled: true
@@ -259,18 +247,10 @@ spec:
           "-e",
         ]
         env:
-        - name: ELASTICSEARCH_HOST
-          value: https://vpc-aes-lab-domain-twhetgachceqykhs4d527zniem.eu-west-1.es.amazonaws.com
-        - name: ELASTICSEARCH_PORT
-          value: "443"
-        - name: ELASTICSEARCH_USERNAME
-          value: 
-        - name: ELASTICSEARCH_PASSWORD
-          value: 
-        - name: ELASTIC_CLOUD_ID
-          value:
-        - name: ELASTIC_CLOUD_AUTH
-          value:
+        - name: LS_HOST
+          value: ""
+        - name: KIBANA_HOST
+          value: ""
         - name: NODE_NAME
           valueFrom:
             fieldRef:
