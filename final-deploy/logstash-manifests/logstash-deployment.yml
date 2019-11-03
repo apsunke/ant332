@@ -22,7 +22,7 @@ spec:
           protocol: TCP
         env:
         - name: ES_VERSION
-          value: 7.1.1
+          value: 6.3.0
         - name: ES_DOMAIN
           value: ""
         - name: LS_JAVA_OPTS
