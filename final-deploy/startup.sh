@@ -15,4 +15,7 @@ wget https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64
 mv yq_linux_amd64 yq
 chmod +x yq
 sudo mv yq /usr/local/bin
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > install-helm.sh
+chmod u+x install-helm.sh
+sudo ./install-helm.sh
 export KUBECONFIG=~/.kube/config
