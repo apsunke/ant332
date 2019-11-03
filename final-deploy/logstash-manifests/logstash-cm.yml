@@ -43,13 +43,13 @@ data:
       if "filebeat" in [tags] {
         elasticsearch {
           hosts => ["${ES_DOMAIN}"]
-          index => "filebeat.%{+yyyy.MM.dd.HH}"
+          index => "filebeat-%{+yyyy.MM.dd.HH}"
         }
       }
       else if "metricbeat" in [tags] {
         elasticsearch {
           hosts => ["${ES_DOMAIN}"]
-          index => "metricbeat.%{+yyyy.MM.dd.HH}"
+          index => "metricbeat-%{+yyyy.MM.dd.HH}"
         }
       }
     }

@@ -1,1 +1,5 @@
 # ANT332
+
+```
+ssh  -N -L 9200:<ES_ADDRESS_TO_TUNNEL_TO>:443 ec2-user@<BASTION_IP>
+```
