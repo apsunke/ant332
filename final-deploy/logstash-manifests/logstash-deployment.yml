@@ -48,6 +48,8 @@ spec:
               path: logstash.yml
             - key: jvm.options
               path: jvm.options
+            - key: metricbeat-template.json
+              path: metricbeat-template.json
       - name: logstash-pipeline-volume
         configMap:
           name: logging-configmap
