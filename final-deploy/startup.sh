@@ -17,5 +17,5 @@ chmod +x yq
 sudo mv yq /usr/local/bin
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > install-helm.sh
 chmod u+x install-helm.sh
-sudo ./install-helm.sh
+sudo ./install-helm.sh >> slowlog.log
 export KUBECONFIG=~/.kube/config

@@ -6,5 +6,5 @@ yq w -i logstash-deployment.yml 'spec.template.spec.containers[0].env[1].value' 
 kubectl apply -f logstash-namespace.yml
 kubectl create -f logstash-cm.yml
 kubectl apply -f logstash-deployment.yml
-sleep 20
+sleep 80
 kubectl -n logstash get pod -oyaml | yq r - 'items[0].status.podIP'
