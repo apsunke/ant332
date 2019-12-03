@@ -144,4 +144,3 @@ metadata:
   namespace: default
   labels:
     k8s-app: filebeat
---- null
