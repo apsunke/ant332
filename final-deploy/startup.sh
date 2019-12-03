@@ -19,3 +19,4 @@ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > inst
 chmod u+x install-helm.sh
 sudo ./install-helm.sh >> slowlog.log
 export KUBECONFIG=~/.kube/config
+echo "Please ignore the 'Helm Not Found' error, that is a bug with the helm installer"
